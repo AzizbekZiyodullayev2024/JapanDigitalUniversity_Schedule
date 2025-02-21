@@ -1,0 +1,47 @@
+services:
+    jdu_web:
+        container_name: jdu_web
+        image: nginx:alpine
+        ports:
+            - "8050:80"
+        volumes:
+            - ./:/var/www
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - jdu_app
+        networks:
+            - jdu_network
+    
+    jdu_app:
+        container_name: jdu_app
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        depends_on:
+            - jdu_db
+        volumes:
+            - ./:/var/www
+        networks:
+            - jdu_network
+        ports:
+            - "9090:9000"
+    
+    jdu_db:
+        image: mysql
+        container_name: jdu_db
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - jdu_database:/var/lib/mysql
+        networks:
+            - jdu_network
+        expose:
+            - 3344
+networks:
+    jdu_network:
+        driver: bridge
+volumes:
+    jdu_database:
