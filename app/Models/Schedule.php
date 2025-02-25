@@ -5,11 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Schedule extends Model
 {
     use HasFactory;
-    public $timestamps = true;
-    protected $fillable = [
-        'name',
-        ];
+    public $timestamps=true;
 }
