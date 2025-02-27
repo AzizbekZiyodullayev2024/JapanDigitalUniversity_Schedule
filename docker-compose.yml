@@ -12,6 +12,7 @@ services:
         networks:
             - jdu_network
     
+    
     jdu_app:
         container_name: jdu_app
         build:

@@ -14,11 +14,11 @@ class AuthController extends Controller
             'email' => 'required|string|max:255|unique:users,email',
             'password' => 'required|string|min:6|confirmed'
         ]);
-        dd($validator);
-        // User::query()->create($validator);
-        // return response()->json(['message' => 'User succesfully registered.'],201);
+        User::query()->create($validator);
+        return response()->json(['message' => 'User succesfully registered.'],201);
     }
-    public function login(Request $request){
+    
+public function login(Request $request){
         $validator = $request->validate([
             'email' => 'required|string|max:255|exists:users,email',
             'password' => 'required|string|min:6'
@@ -30,6 +30,7 @@ class AuthController extends Controller
             return response()->json(['']); 
         }
     }
+
     public function logout(Request $request){
         $request->user()->tokens()->delete();
         return response()->json(['message' => "Logged out"]);        

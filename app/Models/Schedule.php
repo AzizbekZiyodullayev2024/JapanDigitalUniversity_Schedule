@@ -10,3 +10,5 @@ class Schedule extends Model
     use HasFactory;
     public $timestamps=true;
 }
+
+
