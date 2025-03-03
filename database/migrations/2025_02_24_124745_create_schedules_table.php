@@ -9,8 +9,7 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-     public function up(): void
+    public function up(): void
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
@@ -19,9 +18,9 @@ return new class extends Migration
             $table->foreignId('group_id')->constrained();
             $table->foreignId('room_id')->constrained();
             $table->tinyInteger('pair');
-            $table->enum('week_day',['Mon','Tue','Wed','Thu','Fri','Sat','Sun']);
+            $table->enum('week_day', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']);
             $table->date('date');
-            $table->unique(['subject_id','teacher_id','group_id','room_id','pair','week_day'],'schedule_uinique');
+            $table->unique(['subject_id','teacher_id','group_id','pair','week_day','date'],'schedule_unique');
             $table->timestamps();
         });
     }

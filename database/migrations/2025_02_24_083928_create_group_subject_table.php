@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('group_subject', function (Blueprint $table) {
-            $table->foreignId('group_id')->constrained()->onDelete('cascade');
-            $table->foreignId('subject_id')->constrained()->onDelete('cascade');
-            $table->unique(['group_id','subject_id']);
+            $table->foreignId('group_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('subject_id')->constrained()->cascadeOnDelete();
+            $table->unique(['group_id', 'subject_id']);
             $table->timestamps();
         });
     }
