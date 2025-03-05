@@ -40,5 +40,4 @@ class GroupMemberController extends Controller
         $group->students()->detach($id);
         return response()->json(['message'=>'Student  detached from group successfully'], 200);
     }
-
 }

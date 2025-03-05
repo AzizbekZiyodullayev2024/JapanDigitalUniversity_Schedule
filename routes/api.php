@@ -20,6 +20,8 @@ Route::prefix('auth')->group(function () {
     Route::get('/callback/{provider}', [AuthController::class, 'handleProviderCallback']);
 });
 
+Route::get('groups/{group}', [GroupController::class, 'show']);
+
 Route::middleware('auth:sanctum')->group(function (){
     Route::post('logout', [AuthController::class, 'logout']);
     Route::resource('subjects', SubjectController::class);
@@ -28,6 +30,5 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::resource('role-user', RoleUserController::class);
     Route::resource('group-subjects', GroupSubjectController::class);
     Route::resource('subject-teachers', SubjectTeacherController::class);
-    Route::resource('group-members', GropMemberController::class);
     Route::resource('schedules',ScheduleController::class);
 });
