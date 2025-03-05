@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 
@@ -30,7 +28,7 @@ class AuthControllerTest extends TestCase
         ]);
     }
     public function it_can_login_a_user()
-{
+    {
     $user = User::factory()->create([
         'password' => bcrypt('password')
     ]);
@@ -45,7 +43,7 @@ class AuthControllerTest extends TestCase
                  'token',
                  'user' => ['id', 'name', 'email']
              ]);
-}
+    }
 public function it_returns_error_when_login_credentials_are_invalid()
 {
     $response = $this->postJson('/api/login', [
