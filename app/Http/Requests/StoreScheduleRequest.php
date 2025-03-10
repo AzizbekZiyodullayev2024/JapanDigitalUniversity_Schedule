@@ -23,6 +23,7 @@ class StoreScheduleRequest extends FormRequest
      */
     public function rules(): array
     {
+        
         return [
             'subject_id' => 'required|exists:subjects,id',
             'teacher_id' => [
