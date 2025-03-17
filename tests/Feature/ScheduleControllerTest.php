@@ -115,6 +115,7 @@ public function test_show_schedule()
     // Act: Make a GET request to view the schedule
     $response = $this->getJson('/api/schedules/' . $schedule->id);
 
+    
     // Assert: Ensure the schedule data is returned correctly
     $response->assertStatus(200)
              ->assertJson([

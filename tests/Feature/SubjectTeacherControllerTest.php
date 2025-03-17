@@ -27,6 +27,7 @@ class SubjectTeacherControllerTest extends TestCase
     $response->assertStatus(201)
              ->assertJson(['message' => 'Subject Teacher Added']);
 
+             
     // Verify that the teacher is associated with the subject
     $teacher->refresh();
     $this->assertTrue($teacher->subjects->contains($subject));

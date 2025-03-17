@@ -24,6 +24,7 @@ class RoomControllerTest extends TestCase
     $response->assertStatus(200)
              ->assertJsonCount(3, 'data'); // Check if 3 rooms are returned
 }
+
 public function test_room_show()
 {
     // Arrange: Create a room
